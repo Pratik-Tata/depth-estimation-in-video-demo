@@ -126,7 +126,7 @@ function initWorker() {
 
   worker.postMessage({
     type: 'init',
-    modelPath: './models/midas_small.onnx',
+    modelPath: './midas_small.onnx',
     inputSize: [DEPTH_W, DEPTH_H]
   });
 }
