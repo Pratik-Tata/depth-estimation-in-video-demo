@@ -1,0 +1,42 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Video → 2.5D Viewer (ESM)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    html, body { margin:0; height:100%; background:#0b0e11; color:#ddd; font-family:system-ui, sans-serif; }
+    #topbar { display:flex; gap:.75rem; align-items:center; padding:.75rem; border-bottom:1px solid #222; }
+    #canvas-wrap { position:relative; width:100%; height:calc(100% - 58px); overflow:hidden; }
+    #controls { display:flex; gap:1rem; align-items:center; flex-wrap:wrap; }
+    input[type="range"] { width:220px; }
+    button, input, label { font-size:14px; }
+    .badge { font-size:12px; padding:.2rem .4rem; border:1px solid #333; border-radius:6px; color:#9fe870; }
+  </style>
+</head>
+<body>
+  <div id="topbar">
+    <div class="badge">Local-only • No uploads</div>
+    <div id="controls">
+      <label>Video: <input type="file" id="file" accept="video/*" /></label>
+      <label>Depth scale <input type="range" id="depthScale" min="0" max="0.6" step="0.01" value="0.25"></label>
+      <label>Infer every
+        <select id="stride">
+          <option value="1">frame</option>
+          <option value="2">2nd frame</option>
+          <option value="3">3rd frame</option>
+        </select>
+      </label>
+      <label><input type="checkbox" id="pause" /> Pause inference</label>
+      <button id="sample">Load sample (browser test)</button>
+    </div>
+  </div>
+
+  <div id="canvas-wrap"></div>
+
+  <!-- ESM entry -->
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
+
